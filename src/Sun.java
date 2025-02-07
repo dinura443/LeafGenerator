@@ -11,13 +11,12 @@ public class Sun extends JPanel {
         int sunY = 30;
         int sunDiameter = 100;
 
-
-        g.setColor(Color.YELLOW);
+        // Draw the sun
         g.setColor(Color.YELLOW);
         g.fillOval(sunX, sunY, sunDiameter, sunDiameter);
 
+        // Draw the sun rays
         int rayLength = 80;
-
         for (int i = 0; i < 360; i += 30) {
             int centerX = sunX + sunDiameter / 2;
             int centerY = sunY + sunDiameter / 2;
@@ -25,5 +24,24 @@ public class Sun extends JPanel {
             int y2 = (int) (centerY - rayLength * Math.sin(Math.toRadians(i)));
             g.drawLine(centerX, centerY, x2, y2);
         }
+
+        g.setColor(Color.BLACK);
+        int eyeWidth = 10, eyeHeight = 15;
+        int eyeY = sunY + 30;
+        g.fillOval(sunX + 25, eyeY, eyeWidth, eyeHeight);
+        g.fillOval(sunX + 65, eyeY, eyeWidth, eyeHeight);
+
+        g.drawArc(sunX + 30, sunY + 50, 40, 20, 0, -180);
+
+
+    }
+
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("Smiley Sun");
+        Sun sunPanel = new Sun();
+        frame.add(sunPanel);
+        frame.setSize(700, 400);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
     }
 }

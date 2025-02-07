@@ -13,5 +13,6 @@ public class Trunk {
     public void draw(Graphics g) {
         g.setColor(new Color(102, 51, 0));
         g.fillRect(x, y, width, height);
+
     }
 }

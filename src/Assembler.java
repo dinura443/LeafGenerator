@@ -12,11 +12,12 @@ public class Assembler extends JFrame {
     private ArrayList<Branch> branches = new ArrayList<>();
     private int leafAmount = 200;
 
+    private Timer timer;
 
     public Assembler() {
 
         trunk = new Trunk(325, 375, 50, 400);
-        generateBranches(10);
+        generateBranches(8);
         setTitle("Tree Simulation");
         setSize(700, 700);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -24,10 +25,18 @@ public class Assembler extends JFrame {
         setLocationRelativeTo(null);
         add(new DrawPanel());
         generateRandomLeaves();
+        timer = new Timer(200, e -> updateLeaves());
+        timer.start();
         setVisible(true);
     }
 
 
+    private void updateLeaves() {
+        for (Leaf leaf : leaves) {
+            leaf.sway();
+        }
+        repaint();
+    }
 
     // any random control random
     private void generateRandomLeaves() {
@@ -84,7 +93,8 @@ public class Assembler extends JFrame {
                     leaf.draw(g);
                 }
                 new Sun().paintComponent(g);
-
+                g.setColor(new Color(34, 139, 34));
+                g.fillRect(0, getHeight() - 50, getWidth(), 50);
 
 
             }

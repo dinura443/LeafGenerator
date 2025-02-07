@@ -2,15 +2,23 @@ import java.awt.*;
 
 public abstract class Leaf {
     protected int x, y;
-    protected Color color;
+    protected int originalX;
+    protected int swayAmount = 4;
+    protected int swayDirection = 1;
 
-    public Leaf(int x, int y, Color color) {
+    public Leaf(int x, int y) {
         this.x = x;
+        this.originalX = x;
         this.y = y;
-        this.color = color;
     }
 
+    public void sway() {
+        x += swayDirection;
 
+        if (x > originalX + swayAmount || x < originalX - swayAmount) {
+            swayDirection *= -1;
+        }
+    }
 
     public abstract void draw(Graphics g);
 }
