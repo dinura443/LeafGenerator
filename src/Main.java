@@ -1,5 +1,11 @@
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        new Assembler(60);
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the amounts of leaf required for the Tree: ");
+        int LeadAmount = sc.nextInt();
+        new Assembler(LeadAmount);
     }
 }
