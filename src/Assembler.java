@@ -10,9 +10,10 @@ public class Assembler extends JFrame {
     private ArrayList<Leaf> leaves = new ArrayList<>();
     private Random random = new Random();
     private ArrayList<Branch> branches = new ArrayList<>();
+    private int leafAmount = 80;
 
 
-    public Assembler(int count) {
+    public Assembler() {
 
         trunk = new Trunk(325, 375, 50, 400);
         generateBranches(9); // Generates 8 branches
@@ -21,21 +22,19 @@ public class Assembler extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         add(new DrawPanel());
-
-
-        generateRandomLeaves(count);
+        generateRandomLeaves();
         setVisible(true);
     }
 
 
 
     // any random control random
-    private void generateRandomLeaves(int count) {
+    private void generateRandomLeaves() {
         int centerX = 350;
         int centerY = 250;
         int maxRadius = 250;
 
-        for (int i = 0; i < count; i++) {
+        for (int i = 0; i < leafAmount; i++) {
             double angle = 1 * Math.PI * random.nextDouble();
             double radius = maxRadius * Math.sqrt(random.nextDouble());
 
