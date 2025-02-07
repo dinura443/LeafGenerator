@@ -10,16 +10,17 @@ public class Assembler extends JFrame {
     private ArrayList<Leaf> leaves = new ArrayList<>();
     private Random random = new Random();
     private ArrayList<Branch> branches = new ArrayList<>();
-    private int leafAmount = 80;
+    private int leafAmount = 200;
 
 
     public Assembler() {
 
         trunk = new Trunk(325, 375, 50, 400);
-        generateBranches(9); // Generates 8 branches
-        setTitle(" leaf generator");
+        generateBranches(10);
+        setTitle("Tree Simulation");
         setSize(700, 700);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setResizable(false);
         setLocationRelativeTo(null);
         add(new DrawPanel());
         generateRandomLeaves();
