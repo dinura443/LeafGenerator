@@ -50,11 +50,11 @@ public class Assembler extends JFrame {
         }
     }
     private void generateBranches(int count) {
-        int startX = 350; // Start at the top of the trunk
-        int startY = 375; // Trunk top y-position
-        int maxLength = 60; // Maximum length of each branch
+        int startX = 350;
+        int startY = 375;
+        int maxLength = 60;
 
-        int angleIncrement = 30; // Fixed angle for each branch (e.g., 30 degrees)
+        int angleIncrement = 30;
 
         for (int i = 0; i < count; i++) {
             double angle = Math.toRadians(-30 + (i * angleIncrement)  );
