@@ -22,6 +22,7 @@ public class Assembler extends JFrame {
         setLocationRelativeTo(null);
         add(new DrawPanel());
 
+
         generateRandomLeaves(count);
         setVisible(true);
     }
