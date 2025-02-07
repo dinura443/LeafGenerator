@@ -82,6 +82,8 @@ public class Assembler extends JFrame {
                 for (Leaf leaf : leaves) {
                     leaf.draw(g);
                 }
+                new Sun().paintComponent(g);
+
 
 
             }
