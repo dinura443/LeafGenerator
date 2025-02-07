@@ -10,5 +10,7 @@ public abstract class Leaf {
         this.color = color;
     }
 
+
+
     public abstract void draw(Graphics g);
 }

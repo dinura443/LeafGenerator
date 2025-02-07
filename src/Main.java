@@ -1,5 +1,5 @@
 public class Main {
     public static void main(String[] args) {
-        new Assembler(10);
+        new Assembler(60);
     }
 }

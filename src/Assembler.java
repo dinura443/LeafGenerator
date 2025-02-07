@@ -3,13 +3,21 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 
+
+
 public class Assembler extends JFrame {
+    private Trunk trunk;
     private ArrayList<Leaf> leaves = new ArrayList<>();
     private Random random = new Random();
+    private ArrayList<Branch> branches = new ArrayList<>();
+
 
     public Assembler(int count) {
+
+        trunk = new Trunk(325, 375, 50, 400);
+        generateBranches(9); // Generates 8 branches
         setTitle(" leaf generator");
-        setSize(400, 400);
+        setSize(700, 700);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         add(new DrawPanel());
@@ -17,13 +25,23 @@ public class Assembler extends JFrame {
         generateRandomLeaves(count);
         setVisible(true);
     }
- // any random control random
-    private void generateRandomLeaves(int count) {
-        for (int i = 0; i < count; i++) {
-            int x = random.nextInt(350);
-            int y = random.nextInt(350);
-            int type = random.nextInt(3);
 
+
+
+    // any random control random
+    private void generateRandomLeaves(int count) {
+        int centerX = 350;
+        int centerY = 250;
+        int maxRadius = 250;
+
+        for (int i = 0; i < count; i++) {
+            double angle = 1 * Math.PI * random.nextDouble();
+            double radius = maxRadius * Math.sqrt(random.nextDouble());
+
+            int x = (int) (centerX + radius * Math.cos(angle));
+            int y = (int) (centerY + radius * Math.sin(angle));
+
+            int type = random.nextInt(3);
             switch (type) {
                 case 0 -> leaves.add(new LargeLeaf(x, y));
                 case 1 -> leaves.add(new MediumLeaf(x, y));
@@ -31,13 +49,41 @@ public class Assembler extends JFrame {
             }
         }
     }
+    private void generateBranches(int count) {
+        int startX = 350; // Start at the top of the trunk
+        int startY = 375; // Trunk top y-position
+        int maxLength = 60; // Maximum length of each branch
+
+        int angleIncrement = 30; // Fixed angle for each branch (e.g., 30 degrees)
+
+        for (int i = 0; i < count; i++) {
+            double angle = Math.toRadians(-30 + (i * angleIncrement)  );
+
+            int length = 100 + random.nextInt(maxLength);
+            int endX = (int) (startX + length * Math.cos(angle));
+            int endY = (int) (startY - length * Math.sin(angle));
+
+            branches.add(new Branch(startX, startY, endX, endY));
+        }
+    }
+
+
+
 
     class DrawPanel extends JPanel {
-        protected void paintComponent(Graphics g) {
-            super.paintComponent(g);
-            for (Leaf leaf : leaves) {
-                leaf.draw(g);
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+
+                trunk.draw(g);
+
+                for (Branch branch : branches) {
+                    branch.draw(g);
+                }
+                for (Leaf leaf : leaves) {
+                    leaf.draw(g);
+                }
+
+
             }
         }
     }
-}
