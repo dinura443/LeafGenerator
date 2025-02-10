@@ -31,6 +31,10 @@ public class Assembler extends JFrame {
     }
 
 
+    private void Apple(){
+
+    }
+
     private void updateLeaves() {
         for (Leaf leaf : leaves) {
             leaf.sway();
