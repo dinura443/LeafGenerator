@@ -31,9 +31,6 @@ public class Assembler extends JFrame {
     }
 
 
-    private void Apple(){
-
-    }
 
     private void updateLeaves() {
         for (Leaf leaf : leaves) {
@@ -42,7 +39,6 @@ public class Assembler extends JFrame {
         repaint();
     }
 
-    // any random control random
     private void generateRandomLeaves() {
         int centerX = 350;
         int centerY = 250;

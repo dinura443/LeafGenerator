@@ -3,7 +3,6 @@ import java.awt.*;
 
 public class Sun extends JPanel {
 
-    @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
